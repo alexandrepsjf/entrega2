@@ -12,34 +12,35 @@ package model;
  */
 public class Pedido {
     private int id;
-    private String nome;
     private String cliente;
+    private PedidoEstado estado;
+
+    public Pedido(int id, String cliente) {
+        this.cliente = cliente;
+        this.id=id;
+    }
+
+    public PedidoEstado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(PedidoEstado estado) {
+        this.estado = estado;
+    }
     
     public Pedido(){}
     
-    public Pedido(String nome, String cliente){
-        this.nome = nome;
+    public Pedido( String cliente){
         this.cliente = cliente;
+        this.setEstado(new PedidoEstadoCadastrado());
     }
- public Pedido(int id,String nome, String cliente){
-        this.id=id;
-        this.nome = nome;
-        this.cliente = cliente;
-    }
+ 
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getCliente() {

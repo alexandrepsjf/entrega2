@@ -22,15 +22,14 @@ public class GravarPedidoAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        String nome = request.getParameter("textNome");
         String cliente = request.getParameter("textcliente");
 
-        if (nome.equals("") || cliente.equals("")) {
+        if (cliente.equals("")) {
             response.sendRedirect("index.jsp");
         } else {
             try {
-                Pedido contato = new Pedido(nome, cliente);
-                PedidoDAO.getInstance().save(contato);
+                Pedido pedido = new Pedido( cliente);
+                PedidoDAO.getInstance().save(pedido);
               response.sendRedirect("Sucess.jsp");
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();

@@ -24,15 +24,14 @@ public class ConsultarPedidoAction implements Action{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-String nome = request.getParameter("textNome");
 int id= Integer.parseInt(request.getParameter("textId"));
         String cliente = request.getParameter("textcliente");
 
-        if (nome.equals("") ) {
+        if (cliente.equals("") ) {
             response.sendRedirect("index.jsp");
         } else {
             try {
-                Pedido pedido = new Pedido(id,nome,cliente);
+                Pedido pedido = new Pedido(id,cliente);
                 PedidoDAO.getInstance().load(pedido);
                 response.sendRedirect("Sucess.jsp");
             } catch (ClassNotFoundException ex) {

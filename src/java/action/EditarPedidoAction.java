@@ -21,14 +21,13 @@ public class EditarPedidoAction implements Action{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException{
-         String nome = request.getParameter("textNome");
         String cliente = request.getParameter("textCliente");
 int id= Integer.parseInt(request.getParameter("textId"));
-        if (nome.equals("") || cliente.equals("")) {
+        if ( cliente.equals("")) {
             response.sendRedirect("index.jsp");
         } else {
             try {
-                Pedido contato = new Pedido(id,nome, cliente);
+                Pedido contato = new Pedido(cliente);
                 PedidoDAO.getInstance().load(contato);
                response.sendRedirect("Sucess.jsp");
             } catch (ClassNotFoundException ex) {

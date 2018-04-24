@@ -23,8 +23,8 @@ public class PedidoDAO {
             
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            st.execute("insert into pedido (nome, cliente)"
-                    + " values ('" + pedido.getNome() + "', '" + pedido.getCliente() + "')");
+            st.execute("insert into pedido ( cliente)"
+                    + " values ('"  + pedido.getCliente() + "')");
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -36,12 +36,11 @@ public class PedidoDAO {
         Statement st = null;
         int id = pedido.getId();
         String cliente=pedido.getCliente();
-                String nome=pedido.getNome();
         try {
             
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            st.execute("UPDATE pedido SET nome ='"+nome +"', email='"+cliente+ "' WHERE id="+id+" " );
+            st.execute("UPDATE pedido SET  cliente='"+cliente+ "' WHERE id="+id+" " );
         } catch (SQLException e) {
             throw e;
         } finally {
