@@ -54,7 +54,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                 <tr>
                     <td ><c:out value="${entregador.id}" /> </td>
                     <td ><c:out value="${entregador.nome}" /> </td>
-                    <td ><a href="EditarEntregador?id=<c:out value='${entregador.id}' /> " >Editar</a></td>
+                    <td ><a href="FrontController?action=EditarEntregador&id=<c:out value='${entregador.id}' /> " >Editar</a></td>
                     <td ><a href="ApagarEntregador?id=<c:out value='${entregador.id}' /> " >Excluir</a></td>
                 </tr>
             </c:forEach>
