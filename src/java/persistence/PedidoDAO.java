@@ -1,8 +1,11 @@
 package persistence;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import model.Entregador;
 import model.Pedido;
 
 public class PedidoDAO {
@@ -76,4 +79,34 @@ public class PedidoDAO {
         }
     }
 
-}
+    public ArrayList consultar() throws ClassNotFoundException, SQLException {
+        Connection conn = null;
+        Statement st = null;
+        ResultSet  resultado=null;
+           ArrayList pedidos=new ArrayList<Pedido>(); 
+        try {
+            
+            conn = DatabaseLocator.getInstance().getConnection();
+            st = conn.createStatement();           
+          resultado= st.executeQuery("select * from pedido");
+          if(!resultado.isBeforeFirst()){
+              System.out.println("Não Tem dados");
+          }else{
+                        System.out.println(" Tem dados");}
+
+            //resultado=st.getResultSet();
+           // resultado.first();
+            while (resultado.next()) {
+				Pedido pedido = new Pedido();
+				pedido.setId(resultado.getInt("id"));
+				pedido.setCliente(resultado.getString("cliente"));
+				pedidos.add(pedido);
+			}
+            return pedidos;
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            closeResources(conn, st);//s
+        }
+    }}
+

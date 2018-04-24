@@ -1,5 +1,6 @@
-<%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%> 
+<%@page contentType="text/html" pageEncoding="utf-8"%>  
 <%--
 The taglib directive below imports the JSTL library. If you uncomment it,
 you must also add the JSTL library to the project. The Add Library... action
@@ -22,8 +23,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
         <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>       
 <script src="js/materialize.min.js"></script>
-<script src="js/init.js"></script>
-    </head>
+<script src="js/init.js"></script>    </head>
     <body>
         <div class="navbar-fixed">
             <nav class="  darken-4 " role="navigation">
@@ -42,8 +42,8 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
          <div class="center "><h3>Pesquisa de entregadores</h3></div>
         <table class=" highlight centered">            
              <thead>                  <tr> 
-                <th>Código entregador</th>
-                <th>Nome entregador</th>
+                <th>Código pedido</th>
+                <th>Nome pedido</th>
                 <th colspan="2">Ação</th>                
             </tr>
             </thead>
@@ -51,9 +51,9 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
             <c:forEach items="${pedidos}" var="pedido">
                 <tr>
                     <td ><c:out value="${pedido.id}" /> </td>
-                    <td ><c:out value="${pedido.nome}" /> </td>
-                    <td ><a href="EditarPedido?acao=EditarPedido&id=<c:out value='${pedido.id}' /> " >Editar</a></td>
-                    <td ><a href="ApagarPedido?acao=EditarPedido&id=<c:out value='${pedido.id}' /> " >Excluir</a></td>
+                    <td ><c:out value="${pedido.cliente}" /> </td>
+                    <td >Editar</td>
+                    <td >Excluir</td>
                 </tr>
             </c:forEach>
                  </tbody>

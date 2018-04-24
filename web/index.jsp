@@ -29,17 +29,11 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
             <nav class="  darken-4 " role="navigation">
                 <div class="nav-wrapper  ">
                     <ul class="  ">
-                        <li> 
-                             <form action="FrontController?action=ConsultarEntregador" method="POST">
-                <div class="input-field col s12 btn waves-effect waves-light">
-                    <input id="submit" type="submit" class="submit" name="btnIncluir" value="Incluir">                 
-                    <i class="material-icons right">send</i>
-                </div>
-            </form>
-                            <a href="consultarPedido.jsp" class=""><h5>Pedidos</h5></a>
+                        <li>                             
+                            <a href="ConsultarPedidoController" class=""><h5>Pedidos</h5></a>
                         </li>
                         <li>         
-                            <a href="consultarEntregador.jsp" class=" "><h5>Entregadores</h5></a>
+                            <a href="ConsultarEntregadorController" class=" "><h5>Entregadores</h5></a>
                         </li>
                     </ul> 
                 </div>

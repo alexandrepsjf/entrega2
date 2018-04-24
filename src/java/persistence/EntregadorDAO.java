@@ -106,7 +106,7 @@ public class EntregadorDAO {
             while (resultado.next()) {
 				Entregador entregador = new Entregador();
 				entregador.setId(resultado.getInt("id"));
-				entregador.setNome(resultado.getNString("nome"));
+				entregador.setNome(resultado.getString("nome"));
 				entregadores.add(entregador);
 			}
             return entregadores;
