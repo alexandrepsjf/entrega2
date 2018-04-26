@@ -20,23 +20,22 @@ import persistence.PedidoDAO;
 public class GravarPedidoAction implements Action {
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
-        String cliente = request.getParameter("textcliente");
-
+    public void execute(HttpServletRequest request, HttpServletResponse response)throws IOException {
+String cliente = request.getParameter("textCliente");
         if (cliente.equals("")) {
             response.sendRedirect("index.jsp");
         } else {
             try {
-                Pedido pedido = new Pedido( cliente);
+                Pedido pedido = new Pedido(cliente);
                 PedidoDAO.getInstance().save(pedido);
-              response.sendRedirect("Sucess.jsp");
+                response.sendRedirect("Sucess.jsp");
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
             } catch (SQLException ex) {
                 response.sendRedirect("Error.jsp");
                 ex.printStackTrace();
             }
-        }    }
+        }
+    }
 
 }

@@ -20,7 +20,7 @@ public class ApagarPedidoAction implements Action{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException{
-int id= Integer.parseInt(request.getParameter("textId"));
+int id= Integer.parseInt(request.getParameter("id"));
                     try {               
                 PedidoDAO.getInstance().delete(id);
                response.sendRedirect("Sucess.jsp");

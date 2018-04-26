@@ -34,7 +34,7 @@ public class ConsultarEntregadorAction implements Action{
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
             } catch (SQLException ex) {
-                response.sendRedirect("contatoerro.jsp");
+                response.sendRedirect("Error.jsp");
                 ex.printStackTrace();
             } catch (ServletException ex) {
             Logger.getLogger(ConsultarEntregadorAction.class.getName()).log(Level.SEVERE, null, ex);

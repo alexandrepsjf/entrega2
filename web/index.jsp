@@ -1,5 +1,6 @@
-<%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%> 
+<%@page contentType="text/html" pageEncoding="utf-8"%>
 <%--
 The taglib directive below imports the JSTL library. If you uncomment it,
 you must also add the JSTL library to the project. The Add Library... action
@@ -23,17 +24,27 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
         <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>       
 <script src="js/materialize.min.js"></script>
 <script src="js/init.js"></script>
+ <script>
+            $(document).ready(function () {
+                M.updateTextFields();
+                $('.dropdown-trigger').dropdown();
+            });
+        </script>
     </head>
-    <body>
+    <body class="home" style="background-image: url('entrega.jpg'); background-repeat: no-repeat;background-position: center;    background-attachment: fixed;
+">
         <div class="navbar-fixed">
             <nav class="  darken-4 " role="navigation">
                 <div class="nav-wrapper  ">
                     <ul class="  ">
                         <li>                             
-                            <a href="ConsultarPedidoController" class=""><h5>Pedidos</h5></a>
+                            <a href="index.jsp" class=""><h5>HOME</h5></a>
+                        </li>
+                        <li>                             
+                            <a href="FrontController?action=ConsultarPedido" class=""><h5>Pedidos</h5></a>
                         </li>
                         <li>         
-                            <a href="ConsultarEntregadorController" class=" "><h5>Entregadores</h5></a>
+                            <a href="FrontController?action=ConsultarEntregador" class=" "><h5>Entregadores</h5></a>
                         </li>
                     </ul> 
                 </div>

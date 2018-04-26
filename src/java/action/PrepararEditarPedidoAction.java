@@ -14,8 +14,6 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Entregador;
-import model.Pedido;
 import persistence.EntregadorDAO;
 import persistence.PedidoDAO;
 
@@ -23,24 +21,23 @@ import persistence.PedidoDAO;
  *
  * @author negro
  */
-public class ConsultarPedidoAction implements Action{
-    
+public class PrepararEditarPedidoAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
- 
-            try {
-                request.setAttribute("pedidos", PedidoDAO.getInstance().consultar());
-        RequestDispatcher view = request.getRequestDispatcher("/consultarPedido.jsp");
-        view.forward(request, response); 
-            } catch (ClassNotFoundException ex) {
-                ex.printStackTrace();
-            } catch (SQLException ex) {
-                response.sendRedirect("Error.jsp");
-                ex.printStackTrace();
-            } catch (ServletException ex) {
-            Logger.getLogger(ConsultarPedidoAction.class.getName()).log(Level.SEVERE, null, ex);
+        int id = Integer.parseInt(request.getParameter("id"));
+               try {
+            request.setAttribute("pedido", PedidoDAO.getInstance().Buscar(id));
+                 RequestDispatcher view = request.getRequestDispatcher("/prepararEditarPedido.jsp");
+        view.forward(request, response);
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (SQLException ex) {
+            response.sendRedirect("Error.jsp");
+            ex.printStackTrace();
+        } catch (ServletException ex) {
+            Logger.getLogger(PrepararEditarPedidoAction.class.getName()).log(Level.SEVERE, null, ex);
         }
-        }    }
-    
-    
+    }
+}
+

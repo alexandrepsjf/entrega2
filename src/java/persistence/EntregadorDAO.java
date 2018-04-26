@@ -17,7 +17,8 @@ import model.Entregador;
  * @author negro
  */
 public class EntregadorDAO {
-     private static EntregadorDAO instance = new EntregadorDAO();
+
+    private static EntregadorDAO instance = new EntregadorDAO();
 
     public static EntregadorDAO getInstance() {
         return instance;
@@ -30,7 +31,7 @@ public class EntregadorDAO {
         Connection conn = null;
         Statement st = null;
         try {
-            
+
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
             st.execute("insert into entregador (nome)"
@@ -41,37 +42,40 @@ public class EntregadorDAO {
             closeResources(conn, st);//s
         }
     }
-  public void load(Entregador entregador) throws SQLException, ClassNotFoundException {
+
+    public void load(Entregador entregador) throws SQLException, ClassNotFoundException {
         Connection conn = null;
         Statement st = null;
         int id = entregador.getId();
-                String nome=entregador.getNome();
+        String nome = entregador.getNome();
         try {
-            
+
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            st.execute("UPDATE entregador SET nome ='"+nome + "' WHERE id="+id+" " );
+            st.execute("UPDATE entregador SET nome ='" + nome + "' WHERE id=" + id + " ");
         } catch (SQLException e) {
             throw e;
         } finally {
             closeResources(conn, st);//s
         }
     }
-   public void delete(int id) throws SQLException, ClassNotFoundException {
+
+    public void delete(int id) throws SQLException, ClassNotFoundException {
         Connection conn = null;
         Statement st = null;
-            
+
         try {
-            
+
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            st.execute("DELETE from entregador  WHERE id="+id+" " );
+            st.execute("DELETE from entregador  WHERE id=" + id + " ");
         } catch (SQLException e) {
             throw e;
         } finally {
             closeResources(conn, st);//s
         }
     }
+
     private void closeResources(Connection conn, Statement st) {
         try {
             if (st != null) {
@@ -86,33 +90,58 @@ public class EntregadorDAO {
         }
     }
 
-    public ArrayList consultar()  throws SQLException, ClassNotFoundException {
+    public ArrayList consultar() throws SQLException, ClassNotFoundException {
         Connection conn = null;
         Statement st = null;
-        ResultSet  resultado=null;
-           ArrayList entregadores=new ArrayList<Entregador>(); 
+        ResultSet resultado = null;
+        ArrayList entregadores = new ArrayList<Entregador>();
         try {
-            
+
             conn = DatabaseLocator.getInstance().getConnection();
-            st = conn.createStatement();           
-          resultado= st.executeQuery("select * from entregador");
-          if(!resultado.isBeforeFirst()){
-              System.out.println("Não Tem dados");
-          }else{
-                        System.out.println(" Tem dados");}
+            st = conn.createStatement();
+            resultado = st.executeQuery("select * from entregador");
+            if (!resultado.isBeforeFirst()) {
+                System.out.println("Não Tem dados");
+            } else {
+                System.out.println(" Tem dados");
+            }
 
             //resultado=st.getResultSet();
-           // resultado.first();
+            // resultado.first();
             while (resultado.next()) {
-				Entregador entregador = new Entregador();
-				entregador.setId(resultado.getInt("id"));
-				entregador.setNome(resultado.getString("nome"));
-				entregadores.add(entregador);
-			}
+                Entregador entregador = new Entregador();
+                entregador.setId(resultado.getInt("id"));
+                entregador.setNome(resultado.getString("nome"));
+                entregadores.add(entregador);
+            }
             return entregadores;
         } catch (SQLException e) {
             throw e;
         } finally {
             closeResources(conn, st);//s
         }
-    }}
+    }
+
+    public Entregador Buscar(int id) throws SQLException, ClassNotFoundException {
+        Connection conn = null;
+        Statement st = null;
+        ResultSet resultado = null;
+         Entregador entregador = new Entregador();
+        try {
+
+            conn = DatabaseLocator.getInstance().getConnection();
+            st = conn.createStatement();
+            resultado = st.executeQuery("SELECT * FROM `entregador` where id="+id);           
+             while (resultado.next()) {
+                entregador.setId(resultado.getInt("id"));
+                entregador.setNome(resultado.getString("nome"));
+                
+            }
+            return entregador;
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            closeResources(conn, st);//s
+        }
+    }
+}

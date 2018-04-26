@@ -26,8 +26,8 @@ public class PedidoDAO {
             
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            st.execute("insert into pedido ( cliente)"
-                    + " values ('"  + pedido.getCliente() + "')");
+            st.execute("insert into pedido (cliente)"
+                    + " values (' "  + pedido.getCliente() + " ')");
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -108,5 +108,29 @@ public class PedidoDAO {
         } finally {
             closeResources(conn, st);//s
         }
-    }}
+    }
+
+    public Object Buscar(int id) throws ClassNotFoundException, SQLException {
+Connection conn = null;
+        Statement st = null;
+        ResultSet resultado = null;
+         Pedido pedido = new Pedido();
+        try {
+
+            conn = DatabaseLocator.getInstance().getConnection();
+            st = conn.createStatement();
+            resultado = st.executeQuery("SELECT * FROM `pedido` where id="+id);           
+             while (resultado.next()) {
+                pedido.setId(resultado.getInt("id"));
+                pedido.setCliente(resultado.getString("cliente"));
+                
+            }
+            return pedido;
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            closeResources(conn, st);//s
+        }
+    }    }
+
 

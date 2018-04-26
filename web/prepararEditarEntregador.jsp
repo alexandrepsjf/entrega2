@@ -1,6 +1,5 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%> 
-<%@page contentType="text/html" pageEncoding="utf-8"%>
+<%@page contentType="text/html"%>
+<%@page pageEncoding="UTF-8"%>
 <%--
 The taglib directive below imports the JSTL library. If you uncomment it,
 you must also add the JSTL library to the project. The Add Library... action
@@ -37,7 +36,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                 <div class="nav-wrapper  ">
                     <ul class="  ">
                         <li>                             
-                            <a href="index.jsp" class=""><h5>HOME</h5></a>
+                            <a href="index.jsp" class=""><h5>Pedidos</h5></a>
                         </li>
                         <li>                             
                             <a href="FrontController?action=ConsultarPedido" class=""><h5>Pedidos</h5></a>
@@ -48,21 +47,33 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                     </ul> 
                 </div>
             </nav>
-        </div> 
-        <h1>Cadastro de Pedido</h1>
-        <form action="FrontController?action=GravarPedido" method="post">
-            <div class="row">
-                <div class="input-field col s3">
-                    <input placeholder="Nome" id="first_name" type="text" class="validate" name="textCliente">
-                    <label for="first_name">Entre com o nome do cliente </label>
-                </div>
-                <div>
-                    <input type="submit"/>
-                </div>
+        </div>  
+        <div class="center "><h3>Editar  entregadores</h3></div>
+        <form action="FrontController?action=EditarEntregador" method="post">
+            <table class=" highlight centered">            
+                <thead>                  <tr> 
+                        <th></th> <th>Código entregador</th>
+                        <th>Nome entregador</th>
+                        <th >Disponibilidade</th>   <th></th>             
+                    </tr>
+                </thead>
+                <tbody> 
+                    <tr class="center-align">
+                        <td></td>
+                        <td class="col s1">
+                            <input  type="text" name="textId" value="<c:out value='${entregador.id}' />" readonly /> 
+                        </td>
+                        <td> 
+                            <input value="<c:out value='${entregador.nome}' />" type="text" name="textNome"/>
+                        </td> <td></td>
+                    </tr>
+                </tbody> 
+            </table>       
+            <div class="input-field col s1 btn waves-effect waves-light">
+                <input id="submit" type="submit" class="submit" name="btnIncluir" value="Editar">                 
+                <i class="material-icons right">send</i>            
+            </div>
         </form>
-        <div class="center">
-            <a href="index.jsp" class="btn red">Voltar</a>
 
-        </div>
-    </body>
+    </body>    
 </html>

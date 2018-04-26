@@ -27,8 +27,8 @@ int id= Integer.parseInt(request.getParameter("textId"));
             response.sendRedirect("index.jsp");
         } else {
             try {
-                Pedido contato = new Pedido(cliente);
-                PedidoDAO.getInstance().load(contato);
+                Pedido pedido = new Pedido(id,cliente);
+                PedidoDAO.getInstance().load(pedido);
                response.sendRedirect("Sucess.jsp");
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
