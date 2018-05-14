@@ -11,10 +11,10 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 --%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+    "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
-  <head>
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -22,9 +22,9 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
               href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
         <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>       
-<script src="js/materialize.min.js"></script>
-<script src="js/init.js"></script>
- <script>
+        <script src="js/materialize.min.js"></script>
+        <script src="js/init.js"></script>
+        <script>
             $(document).ready(function () {
                 M.updateTextFields();
                 $('.dropdown-trigger').dropdown();
@@ -37,45 +37,50 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                 <div class="nav-wrapper  ">
                     <ul class="  ">
                         <li>                             
-                            <a href="index.jsp" class=""><h5>HOME</h5></a>
+                            <a href="index.jsp" class=""><h5>Home</h5></a>
                         </li>
                         <li>                             
                             <a href="FrontController?action=ConsultarPedido" class=""><h5>Pedidos</h5></a>
                         </li>
                         <li>         
                             <a href="FrontController?action=ConsultarEntregador" class=" "><h5>Entregadores</h5></a>
+                        </li> <li>                             
+                            <a href="FrontController?action=ConsultarCliente" class=""><h5>Clientes</h5></a>
+                        </li>
+                        <li>         
+                            <a href="FrontController?action=ConsultarFuncionario" class=" "><h5>Funcionarios</h5></a>
                         </li>
                     </ul> 
                 </div>
             </nav>
         </div> 
-         <div class="center "><h3>Pesquisa de entregadores</h3></div>
+        <div class="center "><h3>Pesquisa de Clientes</h3></div>
         <table class=" highlight centered">            
-             <thead>                  <tr> 
-                <th>Código entregador</th>
-                <th>Nome entregador</th>
-                <th colspan="2">Ação</th>                
-            </tr>
+            <thead>                  <tr> 
+                    <th>Código Clientes</th>
+                    <th>Nome Clientes</th>
+                    <th colspan="2">Ação</th>                
+                </tr>
             </thead>
             <tbody>
-            <c:forEach items="${entregadores}" var="entregador">
-                <tr>
-                    <td ><c:out value="${entregador.id}" /> </td>
-                    <td ><c:out value="${entregador.nome}" /> </td>
-                    <td ><a href="FrontController?action=PrepararEditarEntregador&id=<c:out value='${entregador.id}' /> " >Editar</a></td>
-                    <td ><a href="FrontController?action=ApagarEntregador&id=<c:out value='${entregador.id}' /> " >Excluir</a></td>
-                </tr>
-            </c:forEach>
-                 </tbody> 
+                <c:forEach items="${clientes}" var="cliente">
+                    <tr>
+                        <td ><c:out value="${cliente.id}" /> </td>
+                        <td ><c:out value="${cliente.nome}" /> </td>
+                        <td ><a href="FrontController?action=PrepararEditarCliente&id=<c:out value='${cliente.id}' /> " ><i class="material-icons right">edit</i></a></td>
+                        <td ><a href="FrontController?action=ApagarCliente&id=<c:out value='${cliente.id}' /> " ><i class="material-icons right">delete</i></a></td>
+                    </tr>
+                </c:forEach>
+            </tbody> 
         </table>
-       
-         <form action="gravarEntregador.jsp" method="POST" class="center">
-                <div class="input-field col s1 btn waves-effect waves-light">
-                    <input id="submit" type="submit" class="submit" name="btnIncluir" value="Incluir">                 
-                    <i class="material-icons right">send</i>
-            
+
+        <form action="gravarCliente.jsp" method="POST" class="center">
+            <div class="input-field col s1 btn waves-effect waves-light">
+                <input id="submit" type="submit" class="submit" name="btnIncluir" value="Incluir">                 
+                <i class="material-icons right">add_circle</i>
+
             </div>
-            </form>
-            
+        </form>
+
     </body>    
 </html>

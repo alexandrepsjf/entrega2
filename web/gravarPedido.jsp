@@ -10,26 +10,11 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 --%>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
-
+<!DOCTYPE html>
 <html>
-  <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-        <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-        <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>       
-<script src="js/materialize.min.js"></script>
-<script src="js/init.js"></script>
- <script>
-            $(document).ready(function () {
-                M.updateTextFields();
-                $('.dropdown-trigger').dropdown();
-            });
-        </script>
+    <head>
+        <title>JSP Page</title>  
+      
     </head>
     <body>
         <div class="navbar-fixed">
@@ -44,25 +29,38 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                         </li>
                         <li>         
                             <a href="FrontController?action=ConsultarEntregador" class=" "><h5>Entregadores</h5></a>
+                        </li> <li>                             
+                            <a href="FrontController?action=ConsultarCliente" class=""><h5>Clientes</h5></a>
+                        </li>
+                        <li>         
+                            <a href="FrontController?action=ConsultarFuncionario" class=" "><h5>Funcionarios</h5></a>
                         </li>
                     </ul> 
                 </div>
             </nav>
         </div> 
-        <h1>Cadastro de Pedido</h1>
+        <h1>Cadastro de Pedido</h1>        
+      
         <form action="FrontController?action=GravarPedido" method="post">
-            <div class="row">
-                <div class="input-field col s3">
-                    <input placeholder="Nome" id="first_name" type="text" class="validate" name="textCliente">
-                    <label for="first_name">Entre com o nome do cliente </label>
-                </div>
-                <div>
-                    <input type="submit"/>
-                </div>
+            <table class=" highlight centered">
+                <tr>  
+                    <td>CLIENTE
+                        <select name="idCliente" id="clientes" >
+                            <option value="" >Selecione</option>
+                            <c:forEach var="cliente" items="${clientes}">
+                                <option value="${cliente.id}" <c:if test="${pedido.clienteId.id == cliente.id}"> selected</c:if> >  ${cliente.nome} </option>
+                            </c:forEach>
+                        </select>
+                    </td>
+                </tr>
+            </table>       
+
+            <div class="center">
+                <input type="submit"/>
+            </div>
         </form>
         <div class="center">
             <a href="index.jsp" class="btn red">Voltar</a>
-
         </div>
     </body>
 </html>

@@ -10,7 +10,8 @@ package model;
  * @author negro
  */
 public class Entregador {
-     private int id;
+
+    private int id;
     private String nome;
 
     public Entregador(String nome) {
@@ -40,5 +41,5 @@ public class Entregador {
 
     public Entregador() {
     }
-    
+
 }

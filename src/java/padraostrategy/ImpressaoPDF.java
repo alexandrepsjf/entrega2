@@ -9,12 +9,10 @@ package padraostrategy;
  *
  * @author negro
  */
-public class ImpressaoPDF implements Impressao{
+public class ImpressaoPDF implements Impressao {
 
     @Override
     public String imprimir() {
-return " PDF >>";
+        return " PDF >>";
     }
 }
-    
-

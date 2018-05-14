@@ -9,11 +9,11 @@ package padraostrategy;
  *
  * @author negro
  */
-public class ImpressaoImpressora implements Impressao{
+public class ImpressaoImpressora implements Impressao {
 
     @Override
     public String imprimir() {
-return " impressora >>";
+        return " impressora >>";
     }
-    
+
 }

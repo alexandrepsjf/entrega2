@@ -16,20 +16,19 @@ import persistence.EntregadorDAO;
  *
  * @author negro
  */
-public class ApagarEntregadorAction implements Action{
+public class ApagarEntregadorAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-int id= Integer.parseInt(request.getParameter("id"));
-                    try {               
-                EntregadorDAO.getInstance().delete(id);
-                response.sendRedirect("Sucess.jsp");
-            } catch (ClassNotFoundException ex) {
-                ex.printStackTrace();
-            } catch (SQLException ex) {
-                response.sendRedirect("Error.jsp");
-                ex.printStackTrace();
-            }
-        }    }
-    
-
+        int id = Integer.parseInt(request.getParameter("id"));
+        try {
+            EntregadorDAO.getInstance().delete(id);
+            response.sendRedirect("Sucess.jsp");
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (SQLException ex) {
+            response.sendRedirect("Error.jsp");
+            ex.printStackTrace();
+        }
+    }
+}

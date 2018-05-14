@@ -9,13 +9,16 @@ package padraostrategy;
  *
  * @author negro
  */
-public class PromocaoBig implements Promocao{
-     @Override
+public class PromocaoBig implements Promocao {
+
+    @Override
     public int obterDesconto() {
-return 20 ;   }
+        return 20;
+    }
 
     @Override
     public String obterPromocao() {
-return "PromoçaoBig";    }
-     
+        return "PromoçaoBig";
+    }
+
 }

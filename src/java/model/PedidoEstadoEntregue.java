@@ -9,34 +9,32 @@ package model;
  *
  * @author negro
  */
-public class PedidoEstadoEntregue implements PedidoEstado{
+public class PedidoEstadoEntregue implements PedidoEstado {
+String nome="Entregue";
 
-   @Override
+    @Override
     public String getEstado() {
-return "Entregue";    }
+        return "Entregue";
+    }
 
     @Override
     public String cadastrar(Pedido pedido) {
-return "Não permitido";    }
+        return "Pedido já  entregue";
+    }
 
     @Override
     public String enviar(Pedido pedido) {
-        return "Não permitido";    }
-
+        return "Pedido já entregue";
+    }
 
     @Override
     public String entregar(Pedido pedido) {
-  return "Não permitido";    }
-
-
-    @Override
-    public String cancelar(Pedido pedido) {
- return "Não permitido";    }
-
+        return "Pedido já entregue";
+    }
 
     @Override
     public String produzir(Pedido pedido) {
- return "Não permitido";    }
+        return "Pedido já entregue";
+    }
 
-    
 }

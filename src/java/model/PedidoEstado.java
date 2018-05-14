@@ -10,10 +10,14 @@ package model;
  * @author negro
  */
 public interface PedidoEstado {
-     public String getEstado();
+
+    public String getEstado();
+
     public String cadastrar(Pedido pedido);
-     public String enviar(Pedido pedido);
-        public String entregar(Pedido pedido);
-         public String cancelar(Pedido pedido);
-          public String produzir(Pedido pedido);
+
+    public String enviar(Pedido pedido);
+
+    public String entregar(Pedido pedido);
+
+    public String produzir(Pedido pedido);
 }

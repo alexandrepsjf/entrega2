@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Refaça a operação</h1>
-             <a href="index.jsp" class="btn red"><button>Voltar</button></a>
+        <a href="index.jsp" class="btn red"><button>Voltar</button></a>
 
     </body>
 </html>

@@ -16,21 +16,19 @@ import persistence.PedidoDAO;
  *
  * @author negro
  */
-public class ApagarPedidoAction implements Action{
+public class ApagarPedidoAction implements Action {
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException{
-int id= Integer.parseInt(request.getParameter("id"));
-                    try {               
-                PedidoDAO.getInstance().delete(id);
-               response.sendRedirect("Sucess.jsp");
-            } catch (ClassNotFoundException ex) {
-                ex.printStackTrace();
-            } catch (SQLException ex) {
-                response.sendRedirect("Error.jsp");
-                ex.printStackTrace();
-            }
-        }    }
-    
-    
-    
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        try {
+            PedidoDAO.getInstance().delete(id);
+            response.sendRedirect("Sucess.jsp");
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (SQLException ex) {
+            response.sendRedirect("Error.jsp");
+            ex.printStackTrace();
+        }
+    }
+}

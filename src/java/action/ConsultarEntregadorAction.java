@@ -21,23 +21,22 @@ import persistence.EntregadorDAO;
  *
  * @author negro
  */
-public class ConsultarEntregadorAction implements Action{
-    
+public class ConsultarEntregadorAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        
-            try {
-                request.setAttribute("entregadores", EntregadorDAO.getInstance().consultar());
-        RequestDispatcher view = request.getRequestDispatcher("/consultarEntregador.jsp");
-        view.forward(request, response);              
-            } catch (ClassNotFoundException ex) {
-                ex.printStackTrace();
-            } catch (SQLException ex) {
-                response.sendRedirect("Error.jsp");
-                ex.printStackTrace();
-            } catch (ServletException ex) {
+
+        try {
+            request.setAttribute("entregadores", EntregadorDAO.getInstance().consultar());
+            RequestDispatcher view = request.getRequestDispatcher("/consultarEntregador.jsp");
+            view.forward(request, response);
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (SQLException ex) {
+            response.sendRedirect("Error.jsp");
+            ex.printStackTrace();
+        } catch (ServletException ex) {
             Logger.getLogger(ConsultarEntregadorAction.class.getName()).log(Level.SEVERE, null, ex);
         }
-        }    }
-
+    }
+}

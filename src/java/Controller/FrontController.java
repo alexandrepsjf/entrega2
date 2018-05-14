@@ -31,13 +31,12 @@ public class FrontController extends HttpServlet {
         String action = request.getParameter("action");
         Action actionObject = null;
         if (action == null || action.equals("")) {
-            response.sendRedirect("index.jsp");}
-            actionObject= ActionFactory.create(action);
-            if(actionObject!=null){
-                actionObject.execute(request, response);
-            }
-        
-       
+            response.sendRedirect("index.jsp");
+        }
+        actionObject = ActionFactory.create(action);
+        if (actionObject != null) {
+            actionObject.execute(request, response);
+        }
 
     }
 

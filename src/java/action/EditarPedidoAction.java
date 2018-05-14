@@ -10,33 +10,32 @@ import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Cliente;
 import model.Pedido;
+import persistence.ClienteDAO;
 import persistence.PedidoDAO;
 
 /**
  *
  * @author negro
  */
-public class EditarPedidoAction implements Action{
+public class EditarPedidoAction implements Action {
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException{
-        String cliente = request.getParameter("textCliente");
-int id= Integer.parseInt(request.getParameter("textId"));
-        if ( cliente.equals("")) {
-            response.sendRedirect("index.jsp");
-        } else {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+                int idCliente = Integer.parseInt(request.getParameter("idCliente"));       
+        int id = Integer.parseInt(request.getParameter("textId"));       
             try {
+                Cliente cliente =ClienteDAO.getInstance().Buscar(idCliente);
                 Pedido pedido = new Pedido(id,cliente);
                 PedidoDAO.getInstance().load(pedido);
-               response.sendRedirect("Sucess.jsp");
+                response.sendRedirect("Sucess.jsp");
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
             } catch (SQLException ex) {
                 response.sendRedirect("Error.jsp");
                 ex.printStackTrace();
             }
-        }    }
+        }
     }
-    
 

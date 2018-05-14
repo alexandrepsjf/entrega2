@@ -13,10 +13,12 @@ public class PromocaoLight implements Promocao {
 
     @Override
     public int obterDesconto() {
-return 10;    }
+        return 10;
+    }
 
     @Override
     public String obterPromocao() {
-return "PromoçaoLight";    }
-    
+        return "PromoçaoLight";
+    }
+
 }

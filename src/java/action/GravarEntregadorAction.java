@@ -17,25 +17,24 @@ import persistence.EntregadorDAO;
  *
  * @author negro
  */
-public class GravarEntregadorAction implements Action{
+public class GravarEntregadorAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
- String nome = request.getParameter("textNome");
-        if (nome.equals("") ) {
+        String nome = request.getParameter("textNome");
+        if (nome.equals("")) {
             response.sendRedirect("index.jsp");
         } else {
             try {
                 Entregador entregador = new Entregador(nome);
                 EntregadorDAO.getInstance().save(entregador);
-               response.sendRedirect("Sucess.jsp");
+                response.sendRedirect("Sucess.jsp");
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
             } catch (SQLException ex) {
                 response.sendRedirect("Error.jsp");
                 ex.printStackTrace();
             }
-        }    }
+        }
     }
-    
-
+}

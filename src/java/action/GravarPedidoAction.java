@@ -10,7 +10,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Cliente;
 import model.Pedido;
+import persistence.ClienteDAO;
 import persistence.PedidoDAO;
 
 /**
@@ -20,14 +22,12 @@ import persistence.PedidoDAO;
 public class GravarPedidoAction implements Action {
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response)throws IOException {
-String cliente = request.getParameter("textCliente");
-        if (cliente.equals("")) {
-            response.sendRedirect("index.jsp");
-        } else {
-            try {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+                int idCliente = Integer.parseInt(request.getParameter("idCliente"));      
+                   try {
+                       Cliente cliente=ClienteDAO.getInstance().Buscar(idCliente);
                 Pedido pedido = new Pedido(cliente);
-                PedidoDAO.getInstance().save(pedido);
+                PedidoDAO.getInstance().save(pedido); 
                 response.sendRedirect("Sucess.jsp");
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
@@ -38,4 +38,4 @@ String cliente = request.getParameter("textCliente");
         }
     }
 
-}
+

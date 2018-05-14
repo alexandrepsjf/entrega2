@@ -10,10 +10,11 @@ package padraostrategy;
  * @author negro
  */
 public class Bebida extends Produto {
-    public Bebida(){
-        this.nome="Bebida";
-        this.promocao= new PromocaoLight();
-        this.impressao=new ImpressaoPDF();
-        
+
+    public Bebida() {
+        this.nome = "Bebida";
+        this.promocao = new PromocaoLight();
+        this.impressao = new ImpressaoPDF();
+
     }
 }

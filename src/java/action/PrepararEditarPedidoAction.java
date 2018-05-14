@@ -26,10 +26,10 @@ public class PrepararEditarPedidoAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int id = Integer.parseInt(request.getParameter("id"));
-               try {
+        try {
             request.setAttribute("pedido", PedidoDAO.getInstance().Buscar(id));
-                 RequestDispatcher view = request.getRequestDispatcher("/prepararEditarPedido.jsp");
-        view.forward(request, response);
+            RequestDispatcher view = request.getRequestDispatcher("/prepararEditarPedido.jsp");
+            view.forward(request, response);
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
         } catch (SQLException ex) {
@@ -40,4 +40,3 @@ public class PrepararEditarPedidoAction implements Action {
         }
     }
 }
-

@@ -4,7 +4,7 @@ nav ul a,nav .brand-logo{color:#fff}p{line-height:2rem}.button-collapse{color:#2
     top: 50%;
 }
 #home{
-background-image: url('entrega.png'); 
-background-repeat: no-repeat;background-position: center; 
-background-attachment: fixed;
+    background-image: url('entrega.png'); 
+    background-repeat: no-repeat;background-position: center; 
+    background-attachment: fixed;
 }

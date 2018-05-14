@@ -27,10 +27,10 @@ public class PrepararEditarEntregadorAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int id = Integer.parseInt(request.getParameter("id"));
-               try {
+        try {
             request.setAttribute("entregador", EntregadorDAO.getInstance().Buscar(id));
-                 RequestDispatcher view = request.getRequestDispatcher("/prepararEditarEntregador.jsp");
-        view.forward(request, response);
+            RequestDispatcher view = request.getRequestDispatcher("/prepararEditarEntregador.jsp");
+            view.forward(request, response);
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
         } catch (SQLException ex) {
@@ -41,4 +41,3 @@ public class PrepararEditarEntregadorAction implements Action {
         }
     }
 }
-

@@ -9,15 +9,18 @@ package model;
  *
  * @author negro
  */
-public class PedidoEstadoEnviado implements PedidoEstado{
+public class PedidoEstadoEnviado implements PedidoEstado {
+String nome="Enviado";
 
     @Override
     public String getEstado() {
-return "Enviado";    }
+        return "Enviado";
+    }
 
     @Override
     public String cadastrar(Pedido pedido) {
-return "Não permitido";    }
+        return "Não permitido";
+    }
 
     @Override
     public String enviar(Pedido pedido) {
@@ -26,17 +29,13 @@ return "Não permitido";    }
 
     @Override
     public String entregar(Pedido pedido) {
- pedido.setEstado(new PedidoEstadoEntregue());
-return pedido.getEstado().getEstado();        }
-
-    @Override
-    public String cancelar(Pedido pedido) {
- pedido.setEstado(new PedidoEstadoCancelado());
-return pedido.getEstado().getEstado();        }
+        pedido.setEstado(new PedidoEstadoEntregue());
+        return pedido.getEstado().getEstado();
+    }
 
     @Override
     public String produzir(Pedido pedido) {
-return "Não permitido";
+        return "Não permitido";
     }
-    
+
 }

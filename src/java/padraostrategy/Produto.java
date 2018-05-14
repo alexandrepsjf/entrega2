@@ -9,12 +9,13 @@ package padraostrategy;
  *
  * @author negro
  */
-public abstract class  Produto {
+public abstract class Produto {
+
     protected Promocao promocao;
-        protected String nome;
+    protected String nome;
     protected Impressao impressao;
 
-    public String  getPromocao() {
+    public String getPromocao() {
         return promocao.obterPromocao();
     }
 
@@ -34,11 +35,12 @@ public abstract class  Produto {
         return impressao;
     }
 
-    public String  getTipoImpressao() {
-return impressao.imprimir();    }
+    public String getTipoImpressao() {
+        return impressao.imprimir();
+    }
 
-    public int desconto(){
+    public int desconto() {
         return promocao.obterDesconto();
     }
-    
+
 }

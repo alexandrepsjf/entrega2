@@ -9,34 +9,32 @@ package model;
  *
  * @author negro
  */
-public class PedidoEstadoProduzido implements PedidoEstado{
+public class PedidoEstadoProduzido implements PedidoEstado {
+String nome="Produzido";
 
     @Override
     public String getEstado() {
-return "Produzido";    }
+        return "Produzido";
+    }
 
     @Override
     public String cadastrar(Pedido pedido) {
-return "Não permitido";    }
+        return "Pedido já Produzido";
+    }
 
     @Override
     public String enviar(Pedido pedido) {
         pedido.setEstado(new PedidoEstadoEnviado());
-return pedido.getEstado().getEstado();        }
+        return pedido.getEstado().getEstado();
+    }
 
     @Override
     public String entregar(Pedido pedido) {
- pedido.setEstado(new PedidoEstadoEntregue());
-return pedido.getEstado().getEstado();       }
-
-    @Override
-    public String cancelar(Pedido pedido) {
-pedido.setEstado(new PedidoEstadoCancelado());
-return pedido.getEstado().getEstado(); }
+        return "Pedido já Produzido";
+    }
 
     @Override
     public String produzir(Pedido pedido) {
-return "Não permitido";
+        return "Pedido já Produzido";
     }
-    
 }

@@ -11,10 +11,10 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 --%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+    "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
-  <head>
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -22,9 +22,9 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
               href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
         <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>       
-<script src="js/materialize.min.js"></script>
-<script src="js/init.js"></script>
- <script>
+        <script src="js/materialize.min.js"></script>
+        <script src="js/init.js"></script>
+        <script>
             $(document).ready(function () {
                 M.updateTextFields();
                 $('.dropdown-trigger').dropdown();
@@ -44,15 +44,20 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                         </li>
                         <li>         
                             <a href="FrontController?action=ConsultarEntregador" class=" "><h5>Entregadores</h5></a>
+                        </li> <li>                             
+                            <a href="FrontController?action=ConsultarCliente" class=""><h5>Clientes</h5></a>
+                        </li>
+                        <li>         
+                            <a href="FrontController?action=ConsultarFuncionario" class=" "><h5>Funcionarios</h5></a>
                         </li>
                     </ul> 
                 </div>
             </nav>
         </div> 
-       <a href="gravarEntregador.jsp" class="btn red"><button>Gravar</button></a>
-         <a href="editarEntregador.jsp"><button>Editar</button></a>
-     <a href="apagarEntregador.jsp" class="btn red"><button>Apagar</button></a>
-     <a href="index.jsp" class="btn red"><button>Voltar</button></a>
+        <a href="gravarEntregador.jsp" class="btn red"><button>Gravar</button></a>
+        <a href="editarEntregador.jsp"><button>Editar</button></a>
+        <a href="apagarEntregador.jsp" class="btn red"><button>Apagar</button></a>
+        <a href="index.jsp" class="btn red"><button>Voltar</button></a>
 
     </body>
 </html>

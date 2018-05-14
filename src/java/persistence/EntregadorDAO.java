@@ -100,12 +100,6 @@ public class EntregadorDAO {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
             resultado = st.executeQuery("select * from entregador");
-            if (!resultado.isBeforeFirst()) {
-                System.out.println("Não Tem dados");
-            } else {
-                System.out.println(" Tem dados");
-            }
-
             //resultado=st.getResultSet();
             // resultado.first();
             while (resultado.next()) {
@@ -126,16 +120,16 @@ public class EntregadorDAO {
         Connection conn = null;
         Statement st = null;
         ResultSet resultado = null;
-         Entregador entregador = new Entregador();
+        Entregador entregador = new Entregador();
         try {
 
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            resultado = st.executeQuery("SELECT * FROM `entregador` where id="+id);           
-             while (resultado.next()) {
+            resultado = st.executeQuery("SELECT * FROM `entregador` where id=" + id);
+            while (resultado.next()) {
                 entregador.setId(resultado.getInt("id"));
                 entregador.setNome(resultado.getString("nome"));
-                
+
             }
             return entregador;
         } catch (SQLException e) {

@@ -10,9 +10,10 @@ package padraostrategy;
  * @author negro
  */
 public class Sanduiche extends Produto {
-    public Sanduiche(){
-        this.nome="Sanduiche";
-        this.promocao= new PromocaoBig();
-        this.impressao=new ImpressaoImpressora();        
-    }    
+
+    public Sanduiche() {
+        this.nome = "Sanduiche";
+        this.promocao = new PromocaoBig();
+        this.impressao = new ImpressaoImpressora();
+    }
 }

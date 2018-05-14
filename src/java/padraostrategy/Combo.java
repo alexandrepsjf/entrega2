@@ -10,11 +10,12 @@ package padraostrategy;
  * @author negro
  */
 public class Combo extends Produto {
-    public Combo(){
-        this.nome="Combo";
-        this.promocao= new PromocaoFamily();
-        this.impressao=new ImpressaoPDF();
-        
+
+    public Combo() {
+        this.nome = "Combo";
+        this.promocao = new PromocaoFamily();
+        this.impressao = new ImpressaoPDF();
+
     }
-    
+
 }

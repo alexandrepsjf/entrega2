@@ -10,5 +10,6 @@ package padraostrategy;
  * @author negro
  */
 public interface Impressao {
+
     public String imprimir();
 }

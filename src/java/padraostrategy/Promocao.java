@@ -10,8 +10,8 @@ package padraostrategy;
  * @author negro
  */
 public interface Promocao {
-    public int obterDesconto(); 
-    public String obterPromocao();
-    }
-    
 
+    public int obterDesconto();
+
+    public String obterPromocao();
+}
