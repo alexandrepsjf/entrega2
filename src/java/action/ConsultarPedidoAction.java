@@ -28,10 +28,8 @@ public class ConsultarPedidoAction implements Action {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         try {
-            PrintWriter writer = response.getWriter();
-writer.println("<h1>testre enviado com sucesso</h1>");
             request.setAttribute("pedidos", PedidoDAO.getInstance().consultar());
-                        request.setAttribute("clientes", ClienteDAO.getInstance().consultar());
+            request.setAttribute("clientes", ClienteDAO.getInstance().consultar());
             RequestDispatcher view = request.getRequestDispatcher("/consultarPedido.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException ex) {

@@ -20,11 +20,13 @@ public class FuncionarioEmbalador extends Funcionario {
     }
 
     public FuncionarioEmbalador() {
+                this.pedidoEstado = new PedidoEstadoEnviado();
+
     }
 
-       @Override
+    @Override
     public String getCargo() {
-return "Embalador";
+        return "Embalador";
     }
 
 }

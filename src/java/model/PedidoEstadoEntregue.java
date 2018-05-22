@@ -10,7 +10,8 @@ package model;
  * @author negro
  */
 public class PedidoEstadoEntregue implements PedidoEstado {
-String nome="Entregue";
+
+    String nome = "Entregue";
 
     @Override
     public String getEstado() {

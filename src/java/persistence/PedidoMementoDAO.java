@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package persistence;
 
 import java.sql.Connection;
@@ -10,32 +5,29 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import model.Cliente;
+import model.PedidoMemento;
 
-/**
- *
- * @author negro
- */
-public class ClienteDAO {
+public class PedidoMementoDAO {
 
-    private static ClienteDAO instance = new ClienteDAO();
+    private static PedidoMementoDAO instance = new PedidoMementoDAO();
 
-    public static ClienteDAO getInstance() {
+    public static PedidoMementoDAO getInstance() {
         return instance;
     }
 
-    private ClienteDAO() {
+    private PedidoMementoDAO() {
     }
 
-    public void save(Cliente cliente) throws SQLException, ClassNotFoundException {
+    public void save(PedidoMemento pedidoMemento) throws SQLException, ClassNotFoundException {
         Connection conn = null;
         Statement st = null;
         try {
 
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            st.execute("insert into cliente (nome,categoria,mensagem)"
-                    + " values ('" + cliente.getNome() + "','" + cliente.getCategoria() + "','" + cliente.getMensagemPedido() + "')");
+            st.execute("insert into pedidoMemento (historico,id,idPedido,estado)"
+                    + " values ('" + pedidoMemento.getHistorico() + "','" + pedidoMemento.getId() + "','" + pedidoMemento.getIdPedido() + "','" + pedidoMemento.getEstadoAnterior().getEstado() + "')");
+
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -43,18 +35,16 @@ public class ClienteDAO {
         }
     }
 
-    public void load(Cliente cliente) throws SQLException, ClassNotFoundException {
+    public void load(PedidoMemento pedidoMemento) throws SQLException, ClassNotFoundException {
         Connection conn = null;
         Statement st = null;
-        int id = cliente.getId();
-        String nome = cliente.getNome();
-        String categoria = cliente.getCategoria();
-
+        int id = pedidoMemento.getId();
+        String historico = pedidoMemento.getHistorico();
+        String estadoAnterior = pedidoMemento.getEstadoAnterior().getEstado();
         try {
-
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            st.execute("UPDATE cliente SET nome ='" + nome + "',  categoria='" + categoria + "' WHERE id=" + id + " ");
+            st.execute("UPDATE pedidoMemento SET  estado='" + estadoAnterior + "' , historico='" + historico + "' WHERE id=" + id + " ");
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -62,23 +52,21 @@ public class ClienteDAO {
         }
     }
 
-    public void atualizarMensagem(Cliente cliente) throws SQLException, ClassNotFoundException {
+    public void atualiza(PedidoMemento pedidoMemento) throws SQLException, ClassNotFoundException {
         Connection conn = null;
         Statement st = null;
-        int id = cliente.getId();
-        String mensagem = cliente.getMensagemPedido();
+        int id = pedidoMemento.getId();
+        String historico = pedidoMemento.getHistorico();
         try {
-
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            st.execute("UPDATE cliente SET  mensagem='" + mensagem + "' WHERE id=" + id + " ");
+            st.execute("UPDATE pedidoMemento SET  historico='" + historico + "' WHERE id=" + id + " ");
         } catch (SQLException e) {
             throw e;
         } finally {
             closeResources(conn, st);//s
         }
     }
-
     public void delete(int id) throws SQLException, ClassNotFoundException {
         Connection conn = null;
         Statement st = null;
@@ -87,7 +75,7 @@ public class ClienteDAO {
 
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            st.execute("DELETE from cliente  WHERE id=" + id + " ");
+            st.execute("DELETE from pedidoMemento  WHERE id=" + id + " ");
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -109,28 +97,22 @@ public class ClienteDAO {
         }
     }
 
-    public ArrayList consultar() throws SQLException, ClassNotFoundException {
+    public ArrayList consultar() throws ClassNotFoundException, SQLException {
         Connection conn = null;
         Statement st = null;
         ResultSet resultado = null;
-        ArrayList clientes = new ArrayList<Cliente>();
+        ArrayList pedidoMementos = new ArrayList<PedidoMemento>();
         try {
-
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            resultado = st.executeQuery("select * from cliente");
-            //resultado=st.getResultSet();
-            // resultado.first();
+            resultado = st.executeQuery("select * from pedidoMemento");
             while (resultado.next()) {
-                Cliente cliente = new Cliente();
-                cliente.setId(resultado.getInt("id"));
-                cliente.setNome(resultado.getString("nome"));
-                cliente.setMensagemPedido(resultado.getString("mensagem"));
-                cliente.setCategoria(resultado.getString("categoria"));
-
-                clientes.add(cliente);
+                PedidoMemento pedidoMemento = new PedidoMemento();
+                pedidoMemento.setId(resultado.getInt("id"));
+                pedidoMemento.criarEstado(resultado.getString("estadoAnterior"));
+                pedidoMementos.add(pedidoMemento);
             }
-            return clientes;
+            return pedidoMementos;
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -138,28 +120,27 @@ public class ClienteDAO {
         }
     }
 
-    public Cliente Buscar(int id) throws SQLException, ClassNotFoundException {
+    public PedidoMemento Buscar(int id) throws ClassNotFoundException, SQLException {
         Connection conn = null;
         Statement st = null;
         ResultSet resultado = null;
-        Cliente cliente = new Cliente();
+        PedidoMemento pedidoMemento = new PedidoMemento();
         try {
 
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            resultado = st.executeQuery("SELECT * FROM `cliente` where id=" + id);
+            resultado = st.executeQuery("SELECT * FROM `pedidoMemento` where id=" + id);
             while (resultado.next()) {
-                cliente.setId(resultado.getInt("id"));
-                cliente.setNome(resultado.getString("nome"));
-                cliente.setMensagemPedido(resultado.getString("mensagem"));
-                cliente.setCategoria(resultado.getString("categoria"));
+                pedidoMemento.setId(resultado.getInt("id"));
+                pedidoMemento.setIdPedido(resultado.getInt("idPedido"));
+                pedidoMemento.criarEstado(resultado.getString("estado"));
+                pedidoMemento.setHistorico(resultado.getString("historico"));
             }
-            return cliente;
+            return pedidoMemento;
         } catch (SQLException e) {
             throw e;
         } finally {
             closeResources(conn, st);//s
         }
     }
-
 }

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Cliente;
 import model.Pedido;
 import persistence.ClienteDAO;
+import persistence.FuncionarioDAO;
 import persistence.PedidoDAO;
 
 /**
@@ -23,19 +24,19 @@ public class GravarPedidoAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-                int idCliente = Integer.parseInt(request.getParameter("idCliente"));      
-                   try {
-                       Cliente cliente=ClienteDAO.getInstance().Buscar(idCliente);
-                Pedido pedido = new Pedido(cliente);
-                PedidoDAO.getInstance().save(pedido); 
-                response.sendRedirect("Sucess.jsp");
-            } catch (ClassNotFoundException ex) {
-                ex.printStackTrace();
-            } catch (SQLException ex) {
-                response.sendRedirect("Error.jsp");
-                ex.printStackTrace();
-            }
+        int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+        try {
+            Cliente cliente = ClienteDAO.getInstance().Buscar(idCliente);
+            Pedido pedido = new Pedido(cliente);
+            pedido.setFuncionario(FuncionarioDAO.getInstance().buscarFuncionario(1));
+            PedidoDAO.getInstance().save(pedido); 
+//            PedidoDAO.getInstance().atualizarMensagem(pedido);
+            response.sendRedirect("Sucess.jsp");
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (SQLException ex) {
+            response.sendRedirect("Error.jsp");
+            ex.printStackTrace();
         }
     }
-
-
+}

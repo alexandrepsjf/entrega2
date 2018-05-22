@@ -41,10 +41,8 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                         </li>
                         <li>                             
                             <a href="FrontController?action=ConsultarPedido" class=""><h5>Pedidos</h5></a>
-                        </li>
-                        <li>         
-                            <a href="FrontController?action=ConsultarEntregador" class=" "><h5>Entregadores</h5></a>
-                        </li> <li>                             
+                        </li>                         
+                        <li>                             
                             <a href="FrontController?action=ConsultarCliente" class=""><h5>Clientes</h5></a>
                         </li>
                         <li>         
@@ -59,6 +57,8 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
             <thead>                  <tr> 
                     <th>Código Clientes</th>
                     <th>Nome Clientes</th>
+                    <th>Categoria Clientes</th>
+                    <th>Mensagem Pedidos</th>
                     <th colspan="2">Ação</th>                
                 </tr>
             </thead>
@@ -67,6 +67,8 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                     <tr>
                         <td ><c:out value="${cliente.id}" /> </td>
                         <td ><c:out value="${cliente.nome}" /> </td>
+                        <td ><c:out value="${cliente.categoria}" /> </td>
+                        <td ><c:out value="${cliente.mensagemPedido}" /> </td>
                         <td ><a href="FrontController?action=PrepararEditarCliente&id=<c:out value='${cliente.id}' /> " ><i class="material-icons right">edit</i></a></td>
                         <td ><a href="FrontController?action=ApagarCliente&id=<c:out value='${cliente.id}' /> " ><i class="material-icons right">delete</i></a></td>
                     </tr>

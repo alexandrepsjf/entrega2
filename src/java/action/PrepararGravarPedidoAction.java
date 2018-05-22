@@ -26,7 +26,7 @@ public class PrepararGravarPedidoAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-       
+
         try {
             request.setAttribute("clientes", ClienteDAO.getInstance().consultar());
             RequestDispatcher view = request.getRequestDispatcher("/gravarPedido.jsp");

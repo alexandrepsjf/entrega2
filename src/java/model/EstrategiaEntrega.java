@@ -3,18 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package padraostrategy;
+package model;
 
 /**
  *
  * @author negro
  */
-public class Bebida extends Produto {
-
-    public Bebida() {
-        this.nome = "Bebida";
-        this.promocao = new PromocaoLight();
-        this.impressao = new ImpressaoPDF();
-
-    }
+public interface EstrategiaEntrega {
+    public String valorEntrega();
 }

@@ -14,7 +14,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import persistence.FuncionarioAtendenteDAO;
+import persistence.FuncionarioCozinheiroDAO;
 
 /**
  *
@@ -26,7 +26,7 @@ public class ConsultarFuncionarioAction implements Action {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         try {
-            request.setAttribute("funcionarios", FuncionarioAtendenteDAO.getInstance().consultar());
+            request.setAttribute("funcionarios", FuncionarioCozinheiroDAO.getInstance().consultar());
             RequestDispatcher view = request.getRequestDispatcher("/consultarFuncionario.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException ex) {

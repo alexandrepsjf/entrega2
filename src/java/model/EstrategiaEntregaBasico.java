@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package padraostrategy;
+package model;
 
 /**
  *
  * @author negro
  */
-public interface Promocao {
+public class EstrategiaEntregaBasico implements EstrategiaEntrega{
 
-    public int obterDesconto();
-
-    public String obterPromocao();
+    @Override
+    public String valorEntrega() {
+return " 10% desconto "  ;  }
+    
 }

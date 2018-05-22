@@ -17,15 +17,15 @@ import funcionario.FuncionarioAtendente;
  *
  * @author negro
  */
-public class FuncionarioAtendenteDAO {
+public class FuncionarioCozinheiroDAO {
 
-    private static FuncionarioAtendenteDAO instance = new FuncionarioAtendenteDAO();
+    private static FuncionarioCozinheiroDAO instance = new FuncionarioCozinheiroDAO();
 
-    public static FuncionarioAtendenteDAO getInstance() {
+    public static FuncionarioCozinheiroDAO getInstance() {
         return instance;
     }
 
-    private FuncionarioAtendenteDAO() {
+    private FuncionarioCozinheiroDAO() {
     }
 
     public void save(Funcionario atendente) throws SQLException, ClassNotFoundException {
@@ -36,7 +36,7 @@ public class FuncionarioAtendenteDAO {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
             st.execute("insert into funcionario (nome,cargo,codCargo)"
-                    + " values ('" + atendente.getNome() + "', 'Atendente',1)");
+                    + " values ('" + atendente.getNome() + "', 'Cozinheiro',2)");
         } catch (SQLException e) {
             throw e;
         } finally {

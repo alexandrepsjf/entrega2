@@ -31,19 +31,17 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
         </script>
     </head>
     <body>
-        <div class="navbar-fixed">
+       <div class="navbar-fixed">
             <nav class="  darken-4 " role="navigation">
                 <div class="nav-wrapper  ">
                     <ul class="  ">
                         <li>                             
-                            <a href="index.jsp" class=""><h5>HOME</h5></a>
+                            <a href="index.jsp" class=""><h5>Home</h5></a>
                         </li>
                         <li>                             
                             <a href="FrontController?action=ConsultarPedido" class=""><h5>Pedidos</h5></a>
-                        </li>
-                        <li>         
-                            <a href="FrontController?action=ConsultarEntregador" class=" "><h5>Entregadores</h5></a>
-                        </li> <li>                             
+                        </li>                         
+                        <li>                             
                             <a href="FrontController?action=ConsultarCliente" class=""><h5>Clientes</h5></a>
                         </li>
                         <li>         
@@ -54,46 +52,57 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
             </nav>
         </div> 
         <h1>Cadastro de Funcionarios</h1>
-        <table class=" highlight centered">            
-            <tr>
-                <td class="input-field col s2">
-                    <input placeholder="Nome" id="first_name" type="text" class="validate" name="textNome">                    
-                </td> 
-            </tr>
-            <tr>
-                <td>
-                    <form action="FrontController?action=GravarFuncionarioAtendente" method="POST" class="">
-                        <div class="input-field col s1 btn waves-effect waves-light">
-                            <input id="submit" type="submit" class="submit" name="btnIncluir" value="Atendente">                 
-                        </div>
-                    </form>
-                </td>
-                <td>
-                    <form action="FrontController?action=GravarFuncionarioCozinheiro" method="POST" class="">
-                        <div class="input-field col s1 btn waves-effect waves-light">
-                            <input id="submit" type="submit" class="submit" name="btnIncluir" value="Cozinheiro">                 
-                        </div>
-                    </form> 
-                </td>
-                <td>
-                    <form action="FrontController?action=GravarFuncionarioEmbalador" method="POST" class="">
-                        <div class="input-field col s1 btn waves-effect waves-light">
-                            <input id="submit" type="submit" class="submit" name="btnIncluir" value="Embalador">                
 
-                        </div>             
-                    </form> 
-                </td>
-                <td>
-                    <form action="FrontController?action=GravarFuncionarioEntregador" method="POST" class="">
-                        <div class="input-field col s1 btn waves-effect waves-light">
-                            <input id="submit" type="submit" class="submit" name="btnIncluir" value="Entregador">                 
-                        </div>
-                    </form> 
-                </td>
-            </tr></table>
-    </div>
-    <div class="center">
-        <a href="index.jsp" class="btn red">Voltar</a>
-    </div>
-</body>
+
+
+        <form action="FrontController?action=GravarFuncionarioAtendente" method="post">
+            <table class=" highlight centered">            
+                <div class="input-field col s3">
+                    <input placeholder="Nome" id="first_name" type="text" class="validate" name="textNome">
+                </div>
+                <div>
+                    <input id="submit" type="submit" class="submit" name="btnIncluir" value="Atendente">                </div>            
+
+            </table>
+        </form>
+
+        <form action="FrontController?action=GravarFuncionarioCozinheiro" method="post">
+            <table class=" highlight centered">            
+                <div class="input-field col s3">
+                    <input placeholder="Nome" id="first_name" type="text" class="validate" name="textNome">
+                </div>
+                <div>
+                    <input id="submit" type="submit" class="submit" name="btnIncluir" value="Cozinheiro">                </div>            
+                </div>            
+
+            </table>
+        </form>
+
+        <form action="FrontController?action=GravarFuncionarioEmbalador" method="post">
+            <table class=" highlight centered">            
+                <div class="input-field col s3">
+                    <input placeholder="Nome" id="first_name" type="text" class="validate" name="textNome">
+                </div>
+                <div>
+                    <input id="submit" type="submit" class="submit" name="btnIncluir" value="Embalador">                </div>            
+                </div>            
+
+            </table>
+        </form>
+
+        <form action="FrontController?action=GravarFuncionarioEntregador" method="post">
+            <table class=" highlight centered">            
+                <div class="input-field col s3">
+                    <input placeholder="Nome" id="first_name" type="text" class="validate" name="textNome">
+                </div>
+                <div>
+                    <input id="submit" type="submit" class="submit" name="btnIncluir" value="Entregador">                </div>            
+                </div>            
+
+            </table>
+        </form>
+        <div class="center">
+            <a href="index.jsp" class="btn red">Voltar</a>
+        </div>
+    </body>
 </html>

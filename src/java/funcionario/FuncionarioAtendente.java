@@ -19,14 +19,22 @@ public class FuncionarioAtendente extends Funcionario {
         this.pedidoEstado = new PedidoEstadoCadastrado();
     }
 
+    public FuncionarioAtendente(int id, String nome) {
+        super(nome);
+        this.codCargo = 1;
+        this.pedidoEstado = new PedidoEstadoCadastrado();
+        this.id = id;
+    }
+
     public FuncionarioAtendente() {
         super();
+                this.pedidoEstado = new PedidoEstadoCadastrado();
     }
+
     @Override
 
-public String getCargo(){
-    return "Atendente";
-}
+    public String getCargo() {
+        return "Atendente";
+    }
 
-   
 }

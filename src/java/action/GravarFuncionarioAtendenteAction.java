@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import funcionario.Funcionario;
 import funcionario.FuncionarioAtendente;
 import persistence.FuncionarioAtendenteDAO;
+import persistence.FuncionarioCozinheiroDAO;
 
 /**
  *
@@ -27,9 +28,8 @@ public class GravarFuncionarioAtendenteAction implements Action {
             response.sendRedirect("index.jsp");
         } else {
             try {
-                Funcionario funcionario = new FuncionarioAtendente(nome);
+                FuncionarioAtendente funcionario = new FuncionarioAtendente(nome);
                 FuncionarioAtendenteDAO.getInstance().save(funcionario);
-               
                 response.sendRedirect("Sucess.jsp");
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();

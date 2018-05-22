@@ -23,19 +23,18 @@ public class EditarPedidoAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-                int idCliente = Integer.parseInt(request.getParameter("idCliente"));       
-        int id = Integer.parseInt(request.getParameter("textId"));       
-            try {
-                Cliente cliente =ClienteDAO.getInstance().Buscar(idCliente);
-                Pedido pedido = new Pedido(id,cliente);
-                PedidoDAO.getInstance().load(pedido);
-                response.sendRedirect("Sucess.jsp");
-            } catch (ClassNotFoundException ex) {
-                ex.printStackTrace();
-            } catch (SQLException ex) {
-                response.sendRedirect("Error.jsp");
-                ex.printStackTrace();
-            }
+        int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+        int id = Integer.parseInt(request.getParameter("textId"));
+        try {
+            Cliente cliente = ClienteDAO.getInstance().Buscar(idCliente);
+            Pedido pedido = new Pedido(id, cliente);
+            PedidoDAO.getInstance().load(pedido);
+            response.sendRedirect("Sucess.jsp");
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (SQLException ex) {
+            response.sendRedirect("Error.jsp");
+            ex.printStackTrace();
         }
     }
-
+}

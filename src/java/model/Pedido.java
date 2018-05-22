@@ -5,6 +5,7 @@
  */
 package model;
 
+import funcionario.Funcionario;
 import java.util.Observable;
 
 /**
@@ -19,32 +20,60 @@ public class Pedido extends Observable {
     private Cliente cliente;
     private int idCliente;
     private PedidoMemento pedidoMemento;
+    private int idFuncionario;
+    private Funcionario funcionario;
 
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public Pedido() {
     }
 
     public Pedido(Cliente observador) {
         this.estado = new PedidoEstadoCadastrado();
         this.addObserver(observador);
-//        this.pedidoMemento= new PedidoMemento(this.getNomeEstado());
+        this.cliente = observador;
         this.idCliente = observador.getId();
+        this.cliente.setMensagemPedido(this.getEstado().getEstado());
     }
-public Pedido(int id,Cliente observador) {
+
+    public Pedido(int id, Cliente observador) {
+        this.cliente = observador;
         this.addObserver(observador);
         this.idCliente = observador.getId();
         this.id = id;
+        this.cliente.setMensagemPedido(this.getEstado().getEstado());
+
     }
+
+    public int getIdFuncionario() {
+        return idFuncionario;
+    }
+
+    public void setIdFuncionario(int idFuncionario) {
+        this.idFuncionario = idFuncionario;
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public PedidoMemento getPedidoMemento() {
+        return pedidoMemento;
+    }
+
+    public void setPedidoMemento(PedidoMemento pedidoMemento) {
+        this.pedidoMemento = pedidoMemento;
+    }
+
     public String getNomeEstado() {
         return nomeEstado;
     }
 
     public void setNomeEstado(String nomeEstado) {
         this.nomeEstado = nomeEstado;
+
     }
 
     public PedidoEstado getEstado() {
@@ -52,19 +81,11 @@ public Pedido(int id,Cliente observador) {
     }
 
     public void setEstado(PedidoEstado estado) {
-        this.estado = estado;
-//        this.pedidoMemento.updateMemento(this.getNomeEstado());
-         setChanged();
+        this.pedidoMemento.setEstadoAnterior(this.getEstado());
+        this.estado = estado;        
+     this.pedidoMemento.updateMemento("Seu pedido está "+estado.getEstado());
+        setChanged();
         notifyObservers();
-    }
-
-    public Pedido() {
-        this.setEstado(new PedidoEstadoCadastrado());        
-    }
-
-    public Pedido(int idCliente) {
-        this.idCliente = idCliente;
-        this.setEstado(new PedidoEstadoCadastrado());       
     }
 
     public int getId() {
@@ -83,6 +104,14 @@ public Pedido(int id,Cliente observador) {
         this.cliente = cliente;
     }
 
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
     public String cadastrar() {
         return estado.cadastrar(this);
     }
@@ -98,8 +127,8 @@ public Pedido(int id,Cliente observador) {
     public String produzir() {
         return estado.produzir(this);
     }
-  
-    public PedidoEstado criarEstado(String nomeEstado) {
+
+    public void criarEstado(String nomeEstado) {
         String nomeClasse = "model.PedidoEstado" + nomeEstado;
         Class classe = null;
         Object objeto = null;
@@ -108,12 +137,13 @@ public Pedido(int id,Cliente observador) {
             classe = Class.forName(nomeClasse);
             objeto = classe.newInstance();
         } catch (Exception ex) {
-            return null;
+            this.estado = null;
         }
         if (!(objeto instanceof PedidoEstado)) {
-            return null;
+            this.estado = null;
         }
         pedidoEstado = (PedidoEstado) objeto;
-        return pedidoEstado;
+        this.estado = pedidoEstado;
+
     }
 }

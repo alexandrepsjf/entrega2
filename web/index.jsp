@@ -25,6 +25,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
         <script src="js/materialize.min.js"></script>
         <script src="js/init.js"></script>
         <script>
+           
             $(document).ready(function () {
                 M.updateTextFields();
                 $('.dropdown-trigger').dropdown();
@@ -43,14 +44,14 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                         <li>                             
                             <a href="FrontController?action=ConsultarPedido" class=""><h5>Pedidos</h5></a>
                         </li>
-                        <li>         
-                            <a href="FrontController?action=ConsultarEntregador" class=" "><h5>Entregadores</h5></a>
-                        </li> <li>                             
+                        <li>                             
                             <a href="FrontController?action=ConsultarCliente" class=""><h5>Clientes</h5></a>
                         </li>
                         <li>         
                             <a href="FrontController?action=ConsultarFuncionario" class=" "><h5>Funcionarios</h5></a>
+
                         </li>
+                        
                     </ul> 
                 </div>
             </nav>

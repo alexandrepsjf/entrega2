@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import persistence.EntregadorDAO;
-import persistence.FuncionarioAtendenteDAO;
+import persistence.FuncionarioCozinheiroDAO;
 
 /**
  *
@@ -23,7 +23,7 @@ public class ApagarFuncionarioAction implements Action {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         try {
-            FuncionarioAtendenteDAO.getInstance().delete(id);
+            FuncionarioCozinheiroDAO.getInstance().delete(id);
             response.sendRedirect("Sucess.jsp");
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();

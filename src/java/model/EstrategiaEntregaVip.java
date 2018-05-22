@@ -3,19 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package padraostrategy;
+package model;
 
 /**
  *
  * @author negro
  */
-public class Combo extends Produto {
+public class EstrategiaEntregaVip implements EstrategiaEntrega{
 
-    public Combo() {
-        this.nome = "Combo";
-        this.promocao = new PromocaoFamily();
-        this.impressao = new ImpressaoPDF();
-
-    }
-
+    @Override
+    public String valorEntrega() {
+return " 50% desconto "  ;  }
+    
 }

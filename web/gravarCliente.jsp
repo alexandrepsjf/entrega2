@@ -31,19 +31,17 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
         </script>
     </head>
     <body>        
-        <div class="navbar-fixed">
+       <div class="navbar-fixed">
             <nav class="  darken-4 " role="navigation">
                 <div class="nav-wrapper  ">
                     <ul class="  ">
                         <li>                             
-                            <a href="index.jsp" class=""><h5>HOME</h5></a>
+                            <a href="index.jsp" class=""><h5>Home</h5></a>
                         </li>
                         <li>                             
                             <a href="FrontController?action=ConsultarPedido" class=""><h5>Pedidos</h5></a>
-                        </li>
-                        <li>         
-                            <a href="FrontController?action=ConsultarEntregador" class=" "><h5>Entregadores</h5></a>
-                        </li> <li>                             
+                        </li>                         
+                        <li>                             
                             <a href="FrontController?action=ConsultarCliente" class=""><h5>Clientes</h5></a>
                         </li>
                         <li>         
@@ -53,22 +51,26 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                 </div>
             </nav>
         </div> 
-        <h1>Cadastro de Funcionario</h1>
+        <h1>Cadastro de Cliente</h1>
         <form action="FrontController?action=GravarCliente" method="post">
-        <table class=" highlight centered">            
+            <table class=" highlight centered">            
                 <div class="input-field col s3">
                     <input placeholder="Nome" id="first_name" type="text" class="validate" name="textNome">
+                </div>
+                <div class="input-field col s3">
+                    <input placeholder="Categoria cliente" id="first_name" type="text" class="validate" name="textCategoria">
+                    <h3>1-Basico  2 - vip 3 - Top</h3>
                 </div>
                 <div>
                     <input type="submit"/>
                 </div>            
 
-        </table>
+            </table>
         </form>
         <div class="center row">
             <a href="index.jsp" class="btn red">Voltar</a>
-            
+
         </div>
-        
+
     </body>
 </html>

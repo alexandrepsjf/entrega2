@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Entregador;
 import persistence.EntregadorDAO;
-import persistence.FuncionarioAtendenteDAO;
+import persistence.FuncionarioCozinheiroDAO;
 
 /**
  *
@@ -29,7 +29,7 @@ public class PrepararEditarFuncionarioAction implements Action {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         try {
-            request.setAttribute("funcionario", FuncionarioAtendenteDAO.getInstance().Buscar(id));
+            request.setAttribute("funcionario", FuncionarioCozinheiroDAO.getInstance().Buscar(id));
             RequestDispatcher view = request.getRequestDispatcher("/prepararEditarFuncionario.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException ex) {

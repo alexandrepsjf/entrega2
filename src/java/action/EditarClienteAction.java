@@ -26,9 +26,10 @@ public class EditarClienteAction implements Action {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int id = Integer.parseInt(request.getParameter("textId"));
         String nome = request.getParameter("textNome");
+        int codCategoria = Integer.parseInt(request.getParameter("textCategoria"));
         try {
-            Cliente   cliente = new Cliente(id, nome);
-              ClienteDAO.getInstance().load(cliente);
+            Cliente cliente = new Cliente(id, nome, codCategoria);
+            ClienteDAO.getInstance().load(cliente);
             response.sendRedirect("Sucess.jsp");
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();

@@ -11,8 +11,8 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import funcionario.Funcionario;
-import funcionario.FuncionarioAtendente;
-import persistence.FuncionarioAtendenteDAO;
+import funcionario.FuncionarioCozinheiro;
+import persistence.FuncionarioCozinheiroDAO;
 
 /**
  *
@@ -27,8 +27,8 @@ public class GravarFuncionarioCozinheiroAction implements Action {
             response.sendRedirect("index.jsp");
         } else {
             try {
-                Funcionario funcionario = new FuncionarioAtendente(nome);
-                FuncionarioAtendenteDAO.getInstance().save(funcionario);
+                Funcionario FuncionarioCozinheiro = new FuncionarioCozinheiro(nome);
+                FuncionarioCozinheiroDAO.getInstance().save(FuncionarioCozinheiro);
                 response.sendRedirect("Sucess.jsp");
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();

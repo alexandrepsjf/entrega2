@@ -41,10 +41,8 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                         </li>
                         <li>                             
                             <a href="FrontController?action=ConsultarPedido" class=""><h5>Pedidos</h5></a>
-                        </li>
-                        <li>         
-                            <a href="FrontController?action=ConsultarEntregador" class=" "><h5>Entregador</h5></a>
-                        </li> <li>                             
+                        </li>                         
+                        <li>                             
                             <a href="FrontController?action=ConsultarCliente" class=""><h5>Clientes</h5></a>
                         </li>
                         <li>         

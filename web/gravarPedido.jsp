@@ -14,33 +14,12 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 <html>
     <head>
         <title>JSP Page</title>  
-      
+
     </head>
     <body>
-        <div class="navbar-fixed">
-            <nav class="  darken-4 " role="navigation">
-                <div class="nav-wrapper  ">
-                    <ul class="  ">
-                        <li>                             
-                            <a href="index.jsp" class=""><h5>HOME</h5></a>
-                        </li>
-                        <li>                             
-                            <a href="FrontController?action=ConsultarPedido" class=""><h5>Pedidos</h5></a>
-                        </li>
-                        <li>         
-                            <a href="FrontController?action=ConsultarEntregador" class=" "><h5>Entregadores</h5></a>
-                        </li> <li>                             
-                            <a href="FrontController?action=ConsultarCliente" class=""><h5>Clientes</h5></a>
-                        </li>
-                        <li>         
-                            <a href="FrontController?action=ConsultarFuncionario" class=" "><h5>Funcionarios</h5></a>
-                        </li>
-                    </ul> 
-                </div>
-            </nav>
-        </div> 
+       
         <h1>Cadastro de Pedido</h1>        
-      
+
         <form action="FrontController?action=GravarPedido" method="post">
             <table class=" highlight centered">
                 <tr>  

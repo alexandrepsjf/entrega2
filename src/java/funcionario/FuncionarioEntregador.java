@@ -20,12 +20,13 @@ public class FuncionarioEntregador extends Funcionario {
     }
 
     public FuncionarioEntregador() {
+                this.pedidoEstado = new PedidoEstadoEntregue();
+
     }
 
-  
     @Override
     public String getCargo() {
-return "Entregador"; 
+        return "Entregador";
     }
 
 }

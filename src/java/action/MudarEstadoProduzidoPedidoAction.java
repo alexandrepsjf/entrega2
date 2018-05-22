@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Pedido;
 import persistence.PedidoDAO;
+import persistence.PedidoMementoDAO;
 
 /**
  *
@@ -28,9 +29,11 @@ public class MudarEstadoProduzidoPedidoAction implements Action {
         int id = Integer.parseInt(request.getParameter("id"));
 //        String estado=request.getParameter("estado");
         try {
-            Pedido pedido=PedidoDAO.getInstance().Buscar(id); 
+            Pedido pedido = PedidoDAO.getInstance().Buscar(id);
             request.setAttribute("resposta", pedido.produzir());
-            PedidoDAO.getInstance().load(pedido);            
+            PedidoDAO.getInstance().atualizarMensagem(pedido);
+           PedidoDAO.getInstance().load(pedido);
+           PedidoMementoDAO.getInstance().Buscar(id).updateMemento("Seu pedido está "+pedido.getEstado().getEstado()+" pelo "+pedido.getFuncionario().getDescricao());
             RequestDispatcher view = request.getRequestDispatcher("/resposta.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException ex) {
